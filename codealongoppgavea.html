@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+  <!-- Lag en side som tar input-type number og sjekk om alderen er mindre
+  enn 16 eller større enn 16. Under 16 er barn og over 16 er voksen. Tell gjerne
+  antall barn og voksne som er tastet inn, og vis på skjermen det totale antallet. Ha en
+  funskjon som returner teksten: "du har kjøpt en voksenbillett", eller "du har
+  kjøpt "barnebillett". Ha en forskjellig farge på hver tekst, her må du
+  bruke parameter. -->
+
+
+
+<body>
+    <div>Skriv inn alder for å kjøpe én billett: </div>
+
+    <input id="inputAlder" type="tel" onchange="tellAlder()" placeholder="Alder" min="1"maxlength="3" required/><br />
+    <!--Brukte input="tel" istendenfor number siden jeg ikke fikk til å begrense antall karakterer med input number-->        
+    <div id="barnEllerVoksen"></div><br>
+    <div id="totalCounter"></div>
+    
+    <script>
+    
+        var alderVar = document.getElementById("inputAlder");
+        let counter = 0;
+        let barncounter = 0;
+        let voksencounter = 0;    
+
+        function tellAlder() {        
+            if (alderVar.value <= 16) {                      
+                barnEllerVoksen.innerHTML = barn('green');
+                    } else { 
+                        barnEllerVoksen.innerHTML = voksen('blue');                                     
+                        }                               
+                document.getElementById('totalCounter').innerHTML = 'Totalt antall billetter: ' + counter;            
+        }
+
+        function barn(farge) {            
+            counter++;
+            barncounter++;
+            return `<div style="color: ${farge}"> Du har lagt til barnebillett(er), antall: ${barncounter}</div>`;
+            
+        }
+
+        function voksen(farge) {
+            counter++;
+            voksencounter++;
+            return `<div style="color: ${farge}"> Du har lagt til voksenbillett(er), antall: ${voksencounter}</div>`;
+            
+        }
+
+    </script>
+</body>
+</html>
