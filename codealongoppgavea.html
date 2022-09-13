@@ -21,7 +21,7 @@
 
     <input id="inputAlder" type="tel" onchange="tellAlder()" placeholder="Alder" min="1"maxlength="3" required/><br />
     <!--Brukte input="tel" istendenfor number siden jeg ikke fikk til å begrense antall karakterer med input number-->        
-    <div id="barnEllerVoksen"></div><br>
+    <div id="barnEllerVoksenDiv"></div><br>
     <div id="totalCounter"></div>
     
     <script>
@@ -33,25 +33,25 @@
 
         function tellAlder() {        
             if (alderVar.value <= 16) {                      
-                barnEllerVoksen.innerHTML = barn('green');
+                barnEllerVoksenDiv.innerHTML = barnEllerVoksen('green');
                     } else { 
-                        barnEllerVoksen.innerHTML = voksen('blue');                                     
+                        barnEllerVoksenDiv.innerHTML = barnEllerVoksen('blue');                                     
                         }                               
                 document.getElementById('totalCounter').innerHTML = 'Totalt antall billetter: ' + counter;            
         }
 
-        function barn(farge) {            
-            counter++;
-            barncounter++;
-            return `<div style="color: ${farge}"> Du har lagt til barnebillett(er), antall: ${barncounter}</div>`;
-            
-        }
-
-        function voksen(farge) {
-            counter++;
-            voksencounter++;
-            return `<div style="color: ${farge}"> Du har lagt til voksenbillett(er), antall: ${voksencounter}</div>`;
-            
+        function barnEllerVoksen(farge) {
+            if (alderVar.value <= 16) {
+                counter++;
+                barncounter++;
+                return `<div style="color: ${farge}"> Du har lagt til barnebillett(er), antall: ${barncounter}</div>`;
+            }
+            else {
+                counter++;
+                voksencounter++;
+                return `<div style="color: ${farge}"> Du har lagt til voksenbillett(er), antall: ${voksencounter}</div>`;
+            }
+                
         }
 
     </script>
