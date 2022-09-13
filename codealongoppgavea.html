@@ -29,8 +29,7 @@
         var alderVar = document.getElementById("inputAlder");
         let counter = 0;
         let barncounter = 0;
-        let voksencounter = 0;
-        let barnEllerVoksenArray = ['Barne', 'Voksen']        
+        let voksencounter = 0;        
 
         function tellAlder() {
             counter++;        
@@ -47,8 +46,6 @@
         function barnEllerVoksen(farge, alder, counter) {
             return `<div style="color: ${farge}"> Du har lagt til ${alder}billett(er), antall: ${counter}</div>`;
         }
-
-        
 
     </script>
 </body>
