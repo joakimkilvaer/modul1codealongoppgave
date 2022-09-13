@@ -29,30 +29,26 @@
         var alderVar = document.getElementById("inputAlder");
         let counter = 0;
         let barncounter = 0;
-        let voksencounter = 0;    
+        let voksencounter = 0;
+        let barnEllerVoksenArray = ['Barne', 'Voksen']        
 
-        function tellAlder() {        
-            if (alderVar.value <= 16) {                      
-                barnEllerVoksenDiv.innerHTML = barnEllerVoksen('green');
-                    } else { 
-                        barnEllerVoksenDiv.innerHTML = barnEllerVoksen('blue');                                     
+        function tellAlder() {
+            counter++;        
+            if (alderVar.value <= 16) {
+                barncounter++;                                   
+                barnEllerVoksenDiv.innerHTML = barnEllerVoksen('green', 'Barne', barncounter);
+                    } else {
+                        voksencounter++;                      
+                        barnEllerVoksenDiv.innerHTML = barnEllerVoksen('blue', 'Voksen', voksencounter);                                     
                         }                               
                 document.getElementById('totalCounter').innerHTML = 'Totalt antall billetter: ' + counter;            
         }
 
-        function barnEllerVoksen(farge) {
-            if (alderVar.value <= 16) {
-                counter++;
-                barncounter++;
-                return `<div style="color: ${farge}"> Du har lagt til barnebillett(er), antall: ${barncounter}</div>`;
-            }
-            else {
-                counter++;
-                voksencounter++;
-                return `<div style="color: ${farge}"> Du har lagt til voksenbillett(er), antall: ${voksencounter}</div>`;
-            }
-                
+        function barnEllerVoksen(farge, alder, counter) {
+            return `<div style="color: ${farge}"> Du har lagt til ${alder}billett(er), antall: ${counter}</div>`;
         }
+
+        
 
     </script>
 </body>
